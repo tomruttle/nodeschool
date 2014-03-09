@@ -1,16 +1,16 @@
-var fs = require('fs');
-var path = require('path');
 var dirname = process.argv[2];
 var extension = process.argv[3];
+var readmodule = require('./6makeitmodular-module');
 
 if (!dirname || !extension) {
 	return;
 }
 
-fs.readdir(dirname, function(err, files) {
-	for (var i=0; i<files.length; i++) {
-		if (path.extname(files[i]) == extension || path.extname(files[i]) == '.' + extension) {
-			console.log(files[i]);
-		}
+readmodule(dirname, extension, function(err, data) {
+	if (err) {
+		console.log(err);
 	}
+	data.forEach(function(item) {
+		console.log(item)
+	});
 });

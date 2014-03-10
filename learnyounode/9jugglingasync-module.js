@@ -1,10 +1,9 @@
 var http = require('http');
 const BufferList = require('bl')
 
-module.exports = function (url, callback, next) {
+module.exports = function (url, callback) {
 
 	http.get(url, function (response) {
-		response.setEncoding("utf8");
 
 		response.on("error", function (error) {
 			return callback(error);
@@ -17,9 +16,9 @@ module.exports = function (url, callback, next) {
 		});
 
 		response.on("end", function (end) {
-			callback(null, bl);
+			callback(null, url + ' ' + bl.toString());
 		});
-		
+
 	});
 
 }

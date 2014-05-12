@@ -1,6 +1,6 @@
 var dirname = process.argv[2];
 var extension = process.argv[3];
-var readmodule = require('./6makeitmodular-module');
+var readmodule = require('./06makeitmodular-module');
 
 if (!dirname || !extension) {
 	return;
